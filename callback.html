@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OAuth Callback</title>
+</head>
+<body>
+  <h1>OAuth Callback</h1>
+  <p id="result">Waiting for authorization code...</p>
+  <script>
+    // Récupère les paramètres de l'URL (par exemple, code et state)
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    const state = params.get('state');
+
+    if (code) {
+      document.getElementById('result').textContent = 'Authorization code: ' + code + (state ? (', State: ' + state) : '');
+    } else {
+      document.getElementById('result').textContent = 'No authorization code found in the URL.';
+    }
+  </script>
+</body>
+</html>
